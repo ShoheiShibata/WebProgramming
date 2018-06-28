@@ -5,9 +5,48 @@ body {
 }
 
 
+font.example1 {
+	color : red;
+	text-decoration : underline;
+}
+
+font.example2 {
+	text-decoration : underline;
+}
+
+
 p{
 	line-height : 1.5;
 }
+
+p.example1 {
+	word-spacing: 8em;
+}
+
+p.example2 {
+	word-spacing: 9.05em;
+}
+
+p.example3 {
+	word-spacing: 15em;
+}
+
+p.example4 {
+	word-spacing: 15.05em;
+}
+
+p.example5 {
+	word-spacing: 12.3em;
+}
+
+p.example6 {
+	word-spacing: 16.1em;
+}
+
+p.example7 {
+	word-spacing: 16.1em;
+}
+
 
 
 input.example1 {
@@ -38,6 +77,10 @@ input.example6 {
 	color : white;
 	width : 70px;
 	background-color : orangered;
+}
+
+input.example7 {
+	width : 30%;
 }
 
 

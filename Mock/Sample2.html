@@ -7,39 +7,33 @@
 <link rel="stylesheet" type="text/css" href="css/origin/common2.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-
 </head>
-
-
-
 <body>
 
 <div class="header" align="right">
-<p><font color="white"><b>ログイン名　さん</b></font>　　<font color="red"><u>ログアウト</u></font>　</p>
+<p><font color="white"><b>ユーザ名　さん</b></font>　　<a href="Sample1.html"><font class="example1">ログアウト</font></a>　</p>
 </div>
 
 <h1 align="center"><b>ユーザ一覧</b></h1>
 
-<div align="right">
-<p><a href="index.html"><u>新規登録</u></a>　</p>
-</div>
+<p  align="right"><a href="Sample3.html"><font class="example2">新規登録</font></a>　</p>
 
-<div align="center">
 <form method="post" action="example.cgi">
-<p><b>ログインID　　　</b><input type="text" name="ログインID" class="example2"></p>
+<p class="example1"><b>　ログインID</b> <input type="text" name="ログインID" class="example2"></p>
 
-<p><b>ユーザ名　　　　</b><input type="text" name="ユーザ名" class="example2"></p>
+<p class="example2"><b>　ユーザ名</b> <input type="text" name="ユーザ名" class="example2"></p>
 
-<p><b>生年月日　　　　</b><input type="date" name="calendar" max="9999-12-31"class="example3">
-	<b>　　～　　　</b><input type="date" name="calendar" max="9999-12-31" class="example3"></p>
-</div>
+<p class="example2"><b>　生年月日</b> <input type="date" name="calendar" max="9999-12-31"class="example3">
+<b>～</b><input type="date" name="calendar" max="9999-12-31" class="example3"></p>
 
 <div align="right">
 <p><input type="button" value="検索" class="example1"></p>
-</form>
 </div>
+</form>
 
-<br><p><hr class="example"></p></br>
+
+<br><p><hr class="example"></p>
+<br>
 
 <table>
 <tr>
@@ -59,13 +53,17 @@
 <td>データ2-1</td>
 <td>データ2-2</td>
 <td>データ2-3</td>
-<td>データ2-4</td>
+<td>　<input type="button" value="詳細" class="example4">　
+	<input type="button" value="更新" class="example5">　
+	<input type="button" value="削除" class="example6"></td>
 </tr>
 <tr>
 <td>データ3-1</td>
 <td>データ3-2</td>
 <td>データ3-3</td>
-<td>データ3-4</td>
+<td>　<input type="button" value="詳細" class="example4">　
+	<input type="button" value="更新" class="example5">　
+	<input type="button" value="削除" class="example6"></td>
 </tr>
 </table>
 

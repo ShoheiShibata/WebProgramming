@@ -8,6 +8,14 @@ p{
 	line-height :1.5;
 }
 
+p.example1 {
+	word-spacing: 3em;
+}
+
+p.example2 {
+	word-spacing: 3.1em;
+}
+
 
 .header {
 	background-color : dimgray;
@@ -16,3 +24,10 @@ p{
 }
 
 
+input.example1 {
+	width : 300px;
+}
+
+input.example2 {
+	width : 170px;
+}
