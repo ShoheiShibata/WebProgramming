@@ -1,7 +1,7 @@
 body {
 	margin : 0px;
-	padding-right : 500px;
-	padding-left : 500px;
+	padding-right : 200px;
+	padding-left : 200px;
 }
 
 
@@ -58,7 +58,7 @@ input.example2 {
 }
 
 input.example3 {
-	width : 180px;
+	width : 20%;
 }
 
 input.example4 {
