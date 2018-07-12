@@ -11,23 +11,28 @@
 <body>
 
 <div class="header" align="right">
-<p><font color="white"><b>ユーザ名　さん</b></font>　　<a href="Sample1.html"><font class="example1">ログアウト</font></a>　</p>
+<p class="example8"><font color="white"><b>ユーザ名 さん</b></font><a href="Sample1.html"> <font class="example1">ログアウト</font></a>　</p>
 </div>
 
-<h1 align="center"><b>ユーザ一覧</b></h1>
+<div align="center">
+<h1><b>ユーザ一覧</b></h1>
+</div>
 
-<p  align="right"><a href="Sample3.html"><font class="example2">新規登録</font></a>　</p>
+<div class="wrapper">
+<div align="right">
+<p><a href="Sample3.html"><font class="example2">新規登録</font></a></p>
+</div>
 
 <form method="post" action="example.cgi">
-<p class="example1"><b>　　　ログインID</b> <input type="text" name="ログインID" class="example2"></p>
+<p class="example1"><b>ログインID</b> <input type="text" name="ログインID" class="example2"></p>
 
-<p class="example2"><b>　　　ユーザ名</b> <input type="text" name="ユーザ名" class="example2"></p>
+<p class="example2"><b>ユーザ名</b> <input type="text" name="ユーザ名" class="example2"></p>
 
-<p class="example2"><b>　　　生年月日</b> <input type="date" name="calendar" max="9999-12-31"class="example3">
-<b>～</b> <input type="date" name="calendar" max="9999-12-31" class="example3"></p>
+<p class="example2"><b>生年月日</b> <input type="date" name="calendar" max="9999-12-31"class="example3"><b class="example"> ～ </b><input type="date" name="calendar" max="9999-12-31" class="example3"></p>
 
 <div align="right">
 <p><input type="button" value="検索" class="example1"></p>
+</div>
 </div>
 </form>
 
@@ -35,7 +40,8 @@
 <br><p><hr class="example"></p>
 <br>
 
-<table>
+<div class="wrapper">
+<table >
 <tr>
 <th class="example1">ログインID</th>
 <th class="example1">ユーザ名</th>
@@ -66,6 +72,7 @@
 	<a href="Sample6.html"><input type="button" value="削除" class="example6"></a></td>
 </tr>
 </table>
+</div>
 
 </body>
 </html>
