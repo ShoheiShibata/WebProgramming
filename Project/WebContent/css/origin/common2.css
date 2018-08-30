@@ -1,0 +1,137 @@
+body {
+	margin : 0px;
+	padding-right : 200px;
+	padding-left : 200px;
+}
+
+
+font.example1 {
+	color : red;
+	text-decoration : underline;
+}
+
+font.example2 {
+	text-decoration : underline;
+}
+
+
+p{
+	line-height : 1.5;
+}
+
+p.example1 {
+	word-spacing: 8em;
+}
+
+p.example2 {
+	word-spacing: 9.05em;
+}
+
+p.example3 {
+	word-spacing: 15em;
+}
+
+p.example4 {
+	word-spacing: 15.05em;
+}
+
+p.example5 {
+	word-spacing: 12.3em;
+}
+
+p.example6 {
+	word-spacing: 16.1em;
+}
+
+p.example7 {
+	word-spacing: 16.1em;
+}
+
+p.example8 {
+	word-spacing: 1em;
+}
+
+
+input.example1 {
+	width : 170px;
+}
+
+input.example2 {
+	width : 50%;
+	border: 2px lightgrey solid;
+}
+
+input.example3 {
+	width : 20%;
+	border: 2px lightgrey solid;
+}
+
+input.example4 {
+	color : white;
+	width : 20%;
+	background-color : dodgerblue;
+}
+
+input.example5 {
+	color : white;
+	width : 20%;
+	background-color : limegreen;
+}
+
+input.example6 {
+	color : white;
+	width : 20%;
+	background-color : orangered;
+}
+
+input.example7 {
+	width : 40%;
+	border: 2px lightgrey solid;
+}
+
+
+.header {
+	background-color : dimgray;
+	margin : 0 auto;
+}
+
+
+table{
+	border : 1px #2b2b2b solid;
+	width : 100%;
+	height : 50px;
+}
+
+td, th {
+border: 2px #2b2b2b solid;
+}
+
+th.example1 {
+	width : 20%;
+}
+th.example2 {
+	width : 25%;
+}
+th.example3 {
+	width : 35%;
+}
+
+
+
+
+hr.example {
+height: 3px;
+background-color: dimgray;
+border: none;
+}
+
+
+.wrapper {
+	padding-right : 5%;
+	padding-left : 5%;
+}
+
+
+b.example {
+	word-spacing: 2em;
+}
