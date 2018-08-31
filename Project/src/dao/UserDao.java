@@ -92,7 +92,7 @@ public class UserDao {
 	    }
 
 
-	    public void findByUserCreateInfo(String login_id, String password, String name, String birth_date) throws SQLException{
+	    public void findByUserCreateInfo(String login_id, String name, String birth_date, String password) throws SQLException{
 	        Connection conn = null;
 	        try {
 	            conn = DBManager.getConnection();
@@ -104,7 +104,7 @@ public class UserDao {
 	            pStmt.setString(2, name);
 	            pStmt.setString(3, birth_date);
 	            pStmt.setString(4, password);
-	             pStmt.executeUpdate();
+	            pStmt.executeUpdate();
 
 
 	        } catch (SQLException e) {

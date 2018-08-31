@@ -58,7 +58,7 @@ public class UserCreateServlet extends HttpServlet {
 			UserDao userDao = new UserDao();
 
 
-			if (password == passwordcheck || login_id == null || name == null || birth_date == null || password == null || passwordcheck == null) {
+			if (!password.equals(passwordcheck) || login_id == null || name == null || birth_date == null || password == null || passwordcheck == null) {
 
 				request.setAttribute("errMsg", "入力された内容は正しくありません。");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userCreate.jsp");
