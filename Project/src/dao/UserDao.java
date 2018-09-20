@@ -121,5 +121,101 @@ public class UserDao {
 	        }
 	    }
 
+
+	    public User findByUserDetailInfo(String id) {
+	        Connection conn = null;
+	        try {
+	            conn = DBManager.getConnection();
+
+	            String sql = "SELECT * FROM user WHERE id = ?";
+
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, id);
+	            ResultSet rs = pStmt.executeQuery();
+
+	            if (!rs.next()) {
+	            	return null;
+	            }
+	            int idData = rs.getInt("id");
+	            String login_idData = rs.getString("login_id");
+	            String nameData = rs.getString("name");
+	            Date birth_dateData = rs.getDate("birth_date");
+	            String passwordData = rs.getString("password");
+	            String create_dateData = rs.getString("create_date");
+	            String update_dateData = rs.getString("update_date");
+	            return new User(idData,login_idData,nameData, birth_dateData,passwordData,create_dateData,update_dateData);
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return null;
+	        } finally {
+	        	if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                    return null;
+	                }
+	        	}
+	        }
+	    }
+
+	    public void findByUserUpdateInfo(String id, String name, String birth_date, String password) throws SQLException{
+	        Connection conn = null;
+	        try {
+	            conn = DBManager.getConnection();
+
+	            String sql = "UPDATE user SET name = ?,birth_date = ?,password = ?,update_date = now() WHERE id = ?";
+
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+
+	            pStmt.setString(1, name);
+	            pStmt.setString(2, birth_date);
+	            pStmt.setString(3, password);
+	            pStmt.setString(4, id);
+	            pStmt.executeUpdate();
+
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            throw e;
+	        } finally {
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
+
+
+	    public void findByUserDeleteInfo(String id) throws SQLException{
+	        Connection conn = null;
+	        try {
+	            conn = DBManager.getConnection();
+
+	            String sql = "DELETE FROM user WHERE id = ?";
+
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, id);
+	            pStmt.executeUpdate();
+
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            throw e;
+	        } finally {
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+	    }
+
 	}
 
