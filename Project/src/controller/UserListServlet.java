@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import model.User;
@@ -26,19 +27,43 @@ public class UserListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserDao userDao = new UserDao();
-		List<User> userList = userDao.findAll();
 
-		request.setAttribute("userList", userList);
+		HttpSession session = request.getSession();
+		Object check = session.getAttribute("userInfo");
+		if(check == null) {
+			response.sendRedirect("LoginServlet");
+			return;
+		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
-		dispatcher.forward(request, response);
+
+			UserDao userDao = new UserDao();
+			List<User> userList = userDao.findAll();
+
+			request.setAttribute("userList", userList);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
+			dispatcher.forward(request, response);
+
 	}
 
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+
+		String login_id = request.getParameter("login_id");
+		String name = request.getParameter("name");
+		String birth_datefrom = request.getParameter("birth_datefrom");
+		String birth_dateto = request.getParameter("birth_dateto");
+
+		UserDao userDao = new UserDao();
+		List<User> user = userDao.findByUserListInfo(login_id,name,birth_datefrom,birth_dateto);
+
+		request.setAttribute("userList", user);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

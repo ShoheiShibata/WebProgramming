@@ -57,7 +57,6 @@ public class UserDao {
 	        try {
 	            conn = DBManager.getConnection();
 
-	            // TODO: 未実装：管理者以外を取得するようSQLを変更する
 	            String sql = "SELECT * FROM user";
 
 	            Statement stmt = conn.createStatement();
@@ -65,6 +64,9 @@ public class UserDao {
 
 	            while (rs.next()) {
 	                int id = rs.getInt("id");
+	                if(id == 1) {
+	            		continue;
+	            	}
 	                String login_id = rs.getString("login_id");
 	                String name = rs.getString("name");
 	                Date birth_date = rs.getDate("birth_date");
@@ -215,6 +217,59 @@ public class UserDao {
 	                }
 	            }
 	        }
+	    }
+
+
+	    public List<User> findByUserListInfo(String login_id, String name, String birth_datefrom, String birth_dateto) {
+	        Connection conn = null;
+	        List<User> userList = new ArrayList<User>();
+
+	        try {
+	            conn = DBManager.getConnection();
+
+	            String sql = "SELECT * FROM user WHERE login_id not in ('admin')";
+
+	            if (!login_id.equals("")) {
+	            	sql += " and login_id ='" + login_id + "'";
+	            }
+
+	            if (!name.equals("")) {
+	            	sql += " and name LIKE'"+ "%" + name + "%" + "'";
+	            }
+
+	            if (!birth_datefrom.equals("") && !birth_dateto.equals("")) {
+	            	sql += " and birth_date BETWEEN'" + birth_datefrom + "'AND'" + birth_dateto + "'";
+	            }
+
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            ResultSet rs = pStmt.executeQuery();
+
+	            while (rs.next()) {
+	            int idData = rs.getInt("id");
+	            String login_idData = rs.getString("login_id");
+	            String nameData = rs.getString("name");
+	            Date birth_dateData = rs.getDate("birth_date");
+	            String passwordData = rs.getString("password");
+	            String create_dateData = rs.getString("create_date");
+	            String update_dateData = rs.getString("update_date");
+	            User user = new User(idData,login_idData,nameData, birth_dateData,passwordData,create_dateData,update_dateData);
+
+	            userList.add(user);
+	            }
+	            } catch (SQLException e) {
+	            e.printStackTrace();
+	            return null;
+	        } finally {
+	        	if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                    return null;
+	                }
+	        	}
+	        }
+	        return userList;
 	    }
 
 	}

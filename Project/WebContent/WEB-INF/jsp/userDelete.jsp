@@ -31,8 +31,13 @@
 <br></br>
 
 <div align="center">
-<br><p class="example1"><a href="UserListServlet"><input type="submit" value="キャンセル" class="example1"></a>
-<form method="post" action="UserDeleteServlet"><input type="hidden" name="id" value="${user.id}"><input type="submit" value="OK" class="example1"></form></p>
+<br>
+<p class="example1">
+<a href="UserListServlet"><input type="submit" value="キャンセル" class="example1"></a>
+<form method="post" action="UserDeleteServlet">
+<input type="hidden" name="id" value="${user.id}"><input type="submit" value="OK" class="example1">
+</form>
+</p>
 </div>
 
 </body>

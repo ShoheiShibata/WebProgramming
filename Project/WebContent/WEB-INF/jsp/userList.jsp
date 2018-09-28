@@ -9,6 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/origin/common2.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
+
+
+
+
 </head>
 <body>
 
@@ -30,7 +34,7 @@
 
 <p class="example2"><b>ユーザ名</b> <input type="text" name="name" class="example2"></p>
 
-<p class="example2"><b>生年月日</b> <input type="date" name="birth_date" max="9999-12-31"class="example3"><b class="example"> ～ </b><input type="date" name="calendar" max="9999-12-31" class="example3"></p>
+<p class="example2"><b>生年月日</b> <input type="date" name="birth_datefrom" max="9999-12-31"class="example3"><b class="example"> ～ </b><input type="date" name="birth_dateto" max="9999-12-31" class="example3"></p>
 
 <div align="right">
 <p><input type="submit" value="検索" class="example1"></p>
@@ -58,9 +62,11 @@
 <td>${user.login_id}</td>
 <td>${user.name}</td>
 <td>${user.birth_date}</td>
-<td>　<a href="UserDetailServlet?id=${user.id}"><input type="submit" value="詳細" class="example4"></a>　
-	<a href="UserUpdateServlet?id=${user.id}"><input type="submit" value="更新" class="example5"></a>　
-	<a href="UserDeleteServlet?id=${user.id}"><input type="submit" value="削除" class="example6"></a></td>
+<td>　
+<a href="UserDetailServlet?id=${user.id}"><input type="submit" value="詳細" class="example4"></a>　
+<c:if test="${userInfo.login_id != 'admin'}"><c:if test="${userInfo.login_id != user.login_id}"><div class="example"></c:if></c:if><a href="UserUpdateServlet?id=${user.id}"><input type="submit" value="更新" class="example5"></a></div>　
+<c:if test="${userInfo.login_id != 'admin'}"><div class="example"></c:if><a href="UserDeleteServlet?id=${user.id}"><input type="submit" value="削除" class="example6"></a></div>
+</td>
 </tr>
 </c:forEach>
 </tbody>

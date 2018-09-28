@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 
 import dao.UserDao;
 import model.User;
@@ -34,6 +40,14 @@ public class UserCreateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		HttpSession session = request.getSession();
+		Object check = session.getAttribute("userInfo");
+		if(check == null) {
+			response.sendRedirect("LoginServlet");
+			return;
+		}
+
 		UserDao userDao = new UserDao();
 		List<User> userList = userDao.findAll();
 
@@ -54,6 +68,19 @@ public class UserCreateServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String birth_date = request.getParameter("birth_date");
 			String password = request.getParameter("password");
+
+			String source = password;
+			Charset charset = StandardCharsets.UTF_8;
+			String algorithm = "MD5";
+
+			byte[] bytes = null;
+			try {
+				bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
+			} catch (NoSuchAlgorithmException e1) {
+				e1.printStackTrace();
+			}
+			String result = DatatypeConverter.printHexBinary(bytes);
+
 			String passwordcheck = request.getParameter("passwordcheck");
 			UserDao userDao = new UserDao();
 
@@ -66,7 +93,7 @@ public class UserCreateServlet extends HttpServlet {
 				return;
 			}
 			try {
-				userDao.findByUserCreateInfo(login_id,name,birth_date,password);
+				userDao.findByUserCreateInfo(login_id,name,birth_date,result);
 			}catch(SQLException e){
 
 				request.setAttribute("errMsg", "入力された内容は正しくありません。");
